@@ -59,7 +59,10 @@ class Record: #Клас для зберігання інформації про 
         return f"У контакта {self.name.value} день народження {self.birthday.value}" if self.birthday else f"У контакта {self.name.value} день народження не заповнено"
 
     def __str__(self):
-        return f"контакт {self.name.value}, номер телефону: {'; '.join(p.value for p in self.phones)}" if self.phones else ""
+        s = f"У контакта {self.name.value}"
+        s += f" день народження: {self.birthday.value}" if self.birthday else ""
+        s += f" номер телефону: {'; '.join(p.value for p in self.phones)}" if self.phones else ""
+        return  s 
 
 class AddressBook(UserDict): #Клас для зберігання та управління записами.
     def __str__(self):
